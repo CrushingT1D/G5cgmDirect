@@ -1,5 +1,7 @@
 # xDripG5
 
+[![Join the chat at https://gitter.im/G5cgmDirect/Lobby](https://badges.gitter.im/G5cgmDirect/Lobby.svg)](https://gitter.im/G5cgmDirect/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![CI Status](http://img.shields.io/travis/loudnate/xDripG5.svg?style=flat)](https://travis-ci.org/loudnate/xDripG5)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/xDripG5.svg?style=flat)](http://cocoapods.org/pods/xDripG5)
