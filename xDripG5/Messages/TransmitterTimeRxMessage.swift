@@ -15,17 +15,23 @@ struct TransmitterTimeRxMessage: TransmitterRxMessage {
     let currentTime: UInt32
     let sessionStartTime: UInt32
 
-    init?(data: NSData) {
-        if data.length >= 10 {
-            if data[0] == self.dynamicType.opcode {
-                status = data[1]
-                currentTime = data[2...5]
-                sessionStartTime = data[6...9]
-            } else {
-                return nil
-            }
-        } else {
+    init?(data: Data) {
+        guard data.count == 16 && data.crcValid() else {
             return nil
         }
+
+        guard data[0] == type(of: self).opcode else {
+            return nil
+        }
+
+        status = data[1]
+        currentTime = data[2..<6]
+        sessionStartTime = data[6..<10]
     }
+}
+
+extension TransmitterTimeRxMessage: Equatable { }
+
+func ==(lhs: TransmitterTimeRxMessage, rhs: TransmitterTimeRxMessage) -> Bool {
+    return lhs.currentTime == rhs.currentTime
 }

@@ -13,7 +13,7 @@ import XCTest
 class GlucoseRxMessageTests: XCTestCase {
 
     func testMessageData() {
-        let data = NSData(hexadecimalString: "3100680a00008a715700cc0006ffc42a")!
+        let data = Data(hexadecimalString: "3100680a00008a715700cc0006ffc42a")!
         let message = GlucoseRxMessage(data: data)!
 
         XCTAssertEqual(0, message.status)
@@ -26,7 +26,7 @@ class GlucoseRxMessageTests: XCTestCase {
     }
 
     func testNegativeTrend() {
-        let data = NSData(hexadecimalString: "31006f0a0000be7957007a0006e4818d")!
+        let data = Data(hexadecimalString: "31006f0a0000be7957007a0006e4818d")!
         let message = GlucoseRxMessage(data: data)!
 
         XCTAssertEqual(0, message.status)
@@ -39,7 +39,7 @@ class GlucoseRxMessageTests: XCTestCase {
     }
 
     func testDisplayOnly() {
-        let data = NSData(hexadecimalString: "3100700a0000f17a5700584006e3cee9")!
+        let data = Data(hexadecimalString: "3100700a0000f17a5700584006e3cee9")!
         let message = GlucoseRxMessage(data: data)!
 
         XCTAssertEqual(0, message.status)
@@ -50,5 +50,18 @@ class GlucoseRxMessageTests: XCTestCase {
         XCTAssertEqual(6, message.state)
         XCTAssertEqual(-29, message.trend)
     }
-    
+
+    func testOldTransmitter() {
+        let data = Data(hexadecimalString: "3100aa00000095a078008b00060a8b34")!
+        let message = GlucoseRxMessage(data: data)!
+
+        XCTAssertEqual(0, message.status)
+        XCTAssertEqual(170, message.sequence)
+        XCTAssertEqual(7905429, message.timestamp)  // 90 days, status is still OK
+        XCTAssertFalse(message.glucoseIsDisplayOnly)
+        XCTAssertEqual(139, message.glucose)
+        XCTAssertEqual(6, message.state)
+        XCTAssertEqual(10, message.trend)
+    }
+
 }

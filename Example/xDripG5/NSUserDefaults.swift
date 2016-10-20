@@ -9,46 +9,31 @@
 import Foundation
 
 
-extension NSUserDefaults {
+extension UserDefaults {
     var passiveModeEnabled: Bool {
         get {
-            return boolForKey("passiveModeEnabled") ?? false
+            return bool(forKey: "passiveModeEnabled")
         }
         set {
-            setBool(newValue, forKey: "passiveModeEnabled")
-        }
-    }
-
-    var startTimeInterval: NSTimeInterval? {
-        get {
-            let value = doubleForKey("startTimeInterval")
-
-            return value > 0 ? value : nil
-        }
-        set {
-            if let value = newValue {
-                setDouble(value, forKey: "startTimeInterval")
-            } else {
-                removeObjectforKey("startTimeInterval")
-            }
+            set(newValue, forKey: "passiveModeEnabled")
         }
     }
 
     var stayConnected: Bool {
         get {
-            return boolForKey("stayConnected") ?? true
+            return object(forKey: "stayConnected") != nil ? bool(forKey: "stayConnected") : true
         }
         set {
-            setBool(newValue, forKey: "stayConnected")
+            set(newValue, forKey: "stayConnected")
         }
     }
 
     var transmitterID: String {
         get {
-            return stringForKey("transmitterID") ?? "500000"
+            return string(forKey: "transmitterID") ?? "500000"
         }
         set {
-            setObject(newValue, forKey: "transmitterID")
+            set(newValue, forKey: "transmitterID")
         }
     }
 }

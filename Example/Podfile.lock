@@ -1,7 +1,5 @@
 PODS:
-  - RNCryptor (4.0.0)
-  - xDripG5 (0.1.1):
-    - RNCryptor (~> 4.0)
+  - xDripG5 (0.8.0)
 
 DEPENDENCIES:
   - xDripG5 (from `../`)
@@ -11,7 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
-  xDripG5: 119279afd3c77bbe297f42bb6b9f64e55668a268
+  xDripG5: 8779a4f495fd8eb81a3d75457afe9b95fb52f61d
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 6b30cba971694d5258509315fb52eb645c9bc5e3
+
+COCOAPODS: 1.1.0.rc.2
